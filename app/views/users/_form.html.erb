@@ -1,0 +1,45 @@
+<% if @user.errors.any? %>
+<p id= "flash-alert">
+  User account could not be created<br />
+  Please correct the following <%= pluralize(@user.errors.count, 'error') %>:
+
+  <ul id= "flash-alert">
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</p>  
+<% end %>
+
+<%= form_for(@user) do |form| %>
+
+<p>
+	<%= form.label :first_name %>
+	<%= form.text_field :first_name,class:"form-control" %>
+</p>
+<p>
+	<%= form.label :last_name %>
+	<%= form.text_field :last_name,class:"form-control" %>
+</p>
+<p>
+	<%= form.label :major %>
+	<%= form.text_field :major,class:"form-control" %>
+</p>
+<p>
+	<%= form.label :email %>
+	<%= form.text_field :email,class:"form-control" %>
+</p>
+<p>
+	<%= form.label :password %>
+	<%= form.password_field :password,class:"form-control" %>
+</p>
+<p>
+	<%= form.label :password_confirmation %><br />
+	<%= form.password_field :password_confirmation,class:"form-control" %>
+</p>
+<p>
+	<%= form.submit class:"btn btn-default"%>
+</p>
+
+
+<% end %>

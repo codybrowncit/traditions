@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TraditionsBook</title>
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  	<%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container">
+		<div class="row ">
+			<%= image_tag "DSU.png", class:"img-responsive"%>
+
+		</div>
+		<div class="row">
+			<button type="button" class="btn btn-default" >
+  						<span class="glyphicon glyphicon-align-justify" aria-hidden="true" data-toggle="collapse" data-target="#collapseMenu" aria-expanded="false" aria-controls="collapseMenu"></span>
+					</button>
+		</div>
+		<div class="collapse" id="collapseMenu" >
+			<nav class=" navbar navbar-default">
+				<div class="container-fluid col-sm-offset-4" >
+					
+					<ul class="nav navbar-nav">
+						<% if user_signed_in? %>
+							<li><%= link_to "Sign Out", session_url(protocol: Rails.env.production? ? 'https' : 'http'), method: 'delete', role:"presentation",class:"text-center" %></li>
+							<%# if current_user.admin? %>
+								<li><%#= link_to "Users", users_path, class:"", role:"presentation", class:"text-center"%></li>
+								<li><%= link_to "Ratings", ratings_path, class:"", role:"presentation", class:"text-center"%></li>
+								<li><%= link_to "Edit/Approve Traditions", traditions_path, class:"", role:"presentation", class:"text-center"%></li>
+							<% #else %>
+								<li><%#= link_to "User Account", user_path(current_user), class:"", role:"presentation", class:"text-center"%></li>
+							<%# end %>
+						<% else %>
+							<li><%= link_to "Sign In", new_session_path, role:"presentation", class:"text-center" %></li>
+							<li><%= link_to "Sign Up", new_user_path, role:"presentation", class:"text-center" %></li>
+						<% end %>
+
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<div class="row">
+			<h1 id="title" class=" text-center"><%= link_to "Traditions", root_path %></h1>
+			<div id="flash-notice">
+				<%= notice %>
+
+			</div>
+			<div id="flash-alert">
+				<%= alert %>
+
+			</div>
+		
+			<% if user_signed_in? %>
+			
+			<% end %>
+			<%= yield %>
+		</div>
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+<h2>All Users</h2>
+<table class="table table-striped">
+	<tr>
+		<th>Name</th>
+		<th>Major</th>
+		<th>Email</th>
+		<th></th>
+	</tr>
+	
+<%= render @users %>
+</table>
+<%= link_to "New User", new_user_path, class:"btn btn-default" %>

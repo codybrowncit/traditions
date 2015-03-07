@@ -1,0 +1,25 @@
+
+
+<table class="table table-striped">
+
+	<% @traditions.each do |tradition| %>
+		<% if tradition.approved %>
+			<tr>		
+				<% tradition.pictures.each do |picture| %>
+					<td> <%= image_tag picture.url, width:100  %></td>
+				<% end %>
+				<td>
+					<h3><%= link_to tradition.name, tradition_path(tradition) %></h3></td>
+			</tr>
+		<% end %>
+		
+	<%end%>
+
+</table>
+<% if user_signed_in? %>
+
+<% if can? :create, @tradition %>
+	<%= link_to "New Tradition", new_tradition_path, class:"btn btn-default"%>
+<%end%>
+
+<%end%>

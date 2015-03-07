@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  ranking: 1
+  picture: MyString
+  poster: MyString
+  approved: false
+
+two:
+  name: MyString
+  ranking: 1
+  picture: MyString
+  poster: MyString
+  approved: false

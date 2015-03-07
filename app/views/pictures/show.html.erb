@@ -1,0 +1,21 @@
+<p>
+
+<%= image_tag @picture.url, width:300 %>
+
+</p>
+<p>
+  <strong>Poster:</strong>
+  <%= link_to @picture.user.name, @picture.user %>
+</p>
+
+<p>
+<strong>Tradition:</strong>
+<%= link_to @picture.tradition.name, @picture.tradition %>
+
+</p>
+<p>
+<strong>Approved:</strong>
+<%= @picture.approved %>
+
+</p>
+<%= link_to "Pictures", pictures_path %>

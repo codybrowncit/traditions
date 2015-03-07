@@ -1,0 +1,21 @@
+<% if @rating.errors.any? %>
+<p>
+  rating could not be saveded:
+  <ul>
+    <% @rating.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</p>  
+<% end %>
+
+<%= form_for ([@tradition, @rating]) do |form| %>
+<p>
+	<%= form.label :rating_number %><br />
+	<%= form.text_field :rating_number %>
+</p>
+<p>
+	<%= form.submit class:"btn btn-default"%>
+</p>
+
+<% end %>
