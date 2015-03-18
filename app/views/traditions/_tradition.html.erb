@@ -1,8 +1,8 @@
-<% if tradition.approved || current_user.admin %>
+<% if tradition.approved #|| current_user.admin %>
 	<tr>
 		<td><%= link_to tradition.name, tradition_path(tradition) %></td>
 		<td><%= truncate(tradition.description) %></td>
-		<% if current_user.admin %>
+		<%# if current_user.admin %>
 			<td>
 				<% if !tradition.approved %>
 				Awaiting Approval 
@@ -16,6 +16,6 @@
 				<%= link_to "Delete", tradition_path(tradition), method: 'delete', data: { confirm: "Are you sure you want to Delete this tradition"}, class:"btn btn-default" %><!--read up on UJS -->
 				<%end%>
 			</td>
-		<% end %>
+		<%# end %>
 	</tr>
 <% end %>	

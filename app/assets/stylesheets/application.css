@@ -43,7 +43,7 @@ html {
 /* Not required for template or sticky footer method. */
 
 .container {
-  margin-top: 170px;
+  margin-top: 210px;
   margin-bottom: 60px;
   width: auto;
   max-width: 680px;
@@ -62,7 +62,7 @@ html {
 }
 body {
 	font-family: DixieFont;
-	font-size: 40px;
+	font-size: 20px;
 }
 a {
 	text-decoration: none;

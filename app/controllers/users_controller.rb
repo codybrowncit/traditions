@@ -2,10 +2,14 @@ class UsersController < ApplicationController
 	force_ssl if Rails.env.production?
 	def index
 		@users = User.all
+		if !user_signed_in?
+			redirect_to root_path, alert: "Please sign in to continue"
+		end
 	end
 
 	def new
 		@user = User.new
+
 	end
 
 	def create
@@ -24,11 +28,14 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		if !user_signed_in?
+			redirect_to root_path, alert: "Please sign in to continue"
+		end
 	end
 
 	def edit
 		@user = User.find(params[:id])
-		if current_user.email != @user.email
+		if user_signed_in? && current_user.email != @user.email 
 			redirect_to root_path, alert: "You are not authorized to access this page."
 		end
 	end
