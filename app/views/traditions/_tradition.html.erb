@@ -1,24 +1,21 @@
+<% if tradition.approved || current_user.admin %>
 	<tr>
-		<%# tradition.pictures.each do |picture| %>
-		<td><%#=image_tag picture.url, width:100 %></td>
-		<%#end%>
 		<td><%= link_to tradition.name, tradition_path(tradition) %></td>
 		<td><%= truncate(tradition.description) %></td>
-		<td><%= link_to tradition.user.name, user_path(tradition.user) %></td>
-		<td><%= image_tag tradition.avg_rating, width:80%></td>
-		<% if !tradition.approved %>
-			<td>Awaiting Approval</td>
-		<% else%>
-			<td>Approved</td>
+		<% if current_user.admin %>
+			<td>
+				<% if !tradition.approved %>
+				Awaiting Approval 
+				<%end%>
+			</td>
+			<td>
+				<% if can? :update, tradition %>
+				<%= link_to "Edit", edit_tradition_path(tradition), class:"btn btn-default" %>
+				<% end %>
+				<% if can? :destroy, tradition %>
+				<%= link_to "Delete", tradition_path(tradition), method: 'delete', data: { confirm: "Are you sure you want to Delete this tradition"}, class:"btn btn-default" %><!--read up on UJS -->
+				<%end%>
+			</td>
 		<% end %>
-		<td>
-			<% if can? :update, tradition %>
-			<%= link_to "Edit", edit_tradition_path(tradition), class:"btn btn-default" %>
-			<% end %>
-			<% if can? :destroy, tradition %>
-			<%= link_to "Delete", tradition_path(tradition), method: 'delete', data: { confirm: "Are you sure you want to Delete this tradition"}, class:"btn btn-default" %><!--read up on UJS -->
-			<%end%>
-		</td>
-		
-
 	</tr>
+<% end %>	

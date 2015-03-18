@@ -1,16 +1,19 @@
 class Tradition < ActiveRecord::Base
 	belongs_to :user
 	has_many :pictures
-	has_many :ratings
-	
+	mount_uploader :url, PictureUploader
 
 	validates :name, :description, presence: true
 	validates :name, uniqueness: true
 	
 	
-	def rating_percent
-		percent = (rating/5.0)*100
-		percent.to_s+'%'
+	def completed
+		pictures.each do |p|
+			if p.user.email == current_user.email
+				return true
+			end
+		end
+		return false
 	end
 
 	def avg_rating

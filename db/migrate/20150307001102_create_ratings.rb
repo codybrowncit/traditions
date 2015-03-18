@@ -1,9 +1,9 @@
 class CreateRatings < ActiveRecord::Migration
   def change
-    create_table :ratings do |t|
-      t.integer :tradition_id
+    create_table :likes do |t|
+      t.integer :picture_id
       t.integer :user_id
-      t.integer :rating_number
+      t.boolean :liked
 
       t.timestamps
     end

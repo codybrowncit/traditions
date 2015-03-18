@@ -17,23 +17,15 @@
 <strong>Email:</strong>
 <%= @user.email %>
 </p>
+<% if current_user.email == @user.email %>
 <p>
 <%= link_to "Edit Account", edit_user_path(@user), class:"btn btn-default" %>
 </p>
+<%end%>
+
 <table class="table table-striped">
   <tr>
-    <th>Traditions Added:</th>
-    <th>Pictures Uploaded:</th>
-  </tr>
-  <tr>
-    <% @user.traditions.each do |tradition| %>
-      <td>
-      <%= link_to tradition.name, tradition %>
-      <% if !tradition.approved %>
-        (Awaiting Approval)
-      <% end %>
-      </td>
-      <% tradition.pictures.each do |picture| %>
+      <% @user.pictures.each do |picture| %>
         <td>
           <%= image_tag picture.url, width:300 %> 
           <% if !picture.approved %>
@@ -42,7 +34,7 @@
         </td>
       <%end%>
   </tr>
-    <% end %>
+
 </tr>
 </table>
 

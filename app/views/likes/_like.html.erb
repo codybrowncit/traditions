@@ -3,7 +3,7 @@
 		<td><%= rating.tradition.name %></td>
 		<td><%= rating.user.name %></td>
 
-		<% if can? :destroy, rating %>	
+		<% if can? :destroy, like %>	
 		<td>
 
 			<%= link_to "Delete", rating_path(rating), method: 'delete',data: { confirm: "Are you sure you want to Delete this user"}, class:"btn btn-default" %>

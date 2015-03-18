@@ -13,6 +13,45 @@
  *= require_tree .
  *= require_self
  */
+ /* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.header { 
+  position: fixed; 
+  top: 0; 
+  left: 0;
+  background: #fff;
+  padding: 0px 100px 0px 100px; 
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  padding: 0px 100px 0px 100px;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background: #fff;
+
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container {
+  margin-top: 170px;
+  margin-bottom: 60px;
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
 @font-face {
     font-family: DixieBoldFont;
     src: url(RBNo2.1/RBNo2.1a-Black.otf);
@@ -36,10 +75,5 @@ a:hover {
 #title {
 	font-family: DixieBoldFont;
 }
-#flash-notice {
-	color: #00CC00;
-}
-#flash-alert {
-	color: #CC0000;
-}
+
 

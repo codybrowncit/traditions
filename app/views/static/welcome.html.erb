@@ -4,22 +4,19 @@
 
 	<% @traditions.each do |tradition| %>
 		<% if tradition.approved %>
-			<tr>		
+					
 				<% tradition.pictures.each do |picture| %>
-					<td> <%= image_tag picture.url, width:100  %></td>
-				<% end %>
+				<tr>
+					<td> <%= image_tag picture.url, class:"img-responsive"  %></td>
+				</tr>
+				
 				<td>
-					<h3><%= link_to tradition.name, tradition_path(tradition) %></h3></td>
+					<%= link_to picture.user.name, picture.user %> completed <%= link_to tradition.name, tradition_path(tradition) %> on <%= picture.created_at.in_time_zone("Mountain Time (US & Canada)").strftime("%b %e") %>
+				</td>
+				<% end %>
 			</tr>
 		<% end %>
 		
 	<%end%>
 
 </table>
-<% if user_signed_in? %>
-
-<% if can? :create, @tradition %>
-	<%= link_to "New Tradition", new_tradition_path, class:"btn btn-default"%>
-<%end%>
-
-<%end%>

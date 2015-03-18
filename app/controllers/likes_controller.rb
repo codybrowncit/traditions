@@ -1,4 +1,4 @@
-class RatingsController < ApplicationController
+class LikesController < ApplicationController
 before_action :authenticate_user!
 load_and_authorize_resource
 def index
@@ -15,21 +15,20 @@ def index
 		#@rating.tradition = Tradition.find(params[:tradition_id])
 		#give the data to the model
 		#@rating = Rating.new(rating_params)
-		@rating.user = current_user
+		@like.user = current_user
 		#save the model
-		if @rating.save
+		if @like.save
 			# redirect to show or index
-			redirect_to @rating.tradition
+			redirect_to @like.picture
 		else
 			render :new
 		end
-
 	end
 	def rating_params
-		params.require(:rating).permit(:rating_number, )
+		params.require(:like).permit(:liked, :user_id, :picture_id)
 	end
 	def destroy
-		@rating.destroy
+		@like.destroy
 	end
 
 end

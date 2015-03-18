@@ -52,7 +52,7 @@ class TraditionsController < ApplicationController
 		redirect_to traditions_path
 	end
 	def tradition_params
-		params.require(:tradition).permit(:rating, :name, :description, :approved)
+		params.require(:tradition).permit(:rating, :name, :description, :approved, :url)
 	end
 
 end

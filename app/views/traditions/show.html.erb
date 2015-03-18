@@ -1,34 +1,39 @@
 <p>
-<% @tradition.pictures.each do |picture| %>
-<%=image_tag picture.url, class:"img-responsive" %>
-<%end%>
+
+<%=image_tag @tradition.url, class:"img-responsive" %>
+
 
 </p>
 <p>
-<strong>Name:</strong>
+
 <%= @tradition.name %>
-
+<% if !@tradition.approved %>
+(Awaiting Aproval)
+<% end %>
 </p>
 <p>
-<strong>Description:</strong>
+
 <%= @tradition.description %>
 </p>
-
+<% if !completed(@tradition) %>
 <p>
-  <strong>Posted By:</strong>
-  <%= link_to @tradition.user.name, @tradition.user %>
+<%= link_to "", new_tradition_picture_path(@tradition), class:"glyphicon glyphicon-camera btn btn-default" %> Complete Tradition
 </p>
-
+<%else%>
 <p>
-<strong>Rating:</strong>
-<%= image_tag @tradition.avg_rating, width:80%>
+<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Tradition Completed
 </p>
+<%end%>
+<table class="table table-striped">
+<% @tradition.pictures.each do |picture| %>
+<tr>
+	<td><%=image_tag picture.url, class:"img-responsive" %></td>
+</tr>
+<tr>
+	<td>Completed by <%= link_to picture.user.name, picture.user %> on <%= picture.created_at.in_time_zone("Mountain Time (US & Canada)").strftime("%b %e") %></td>
+</tr>
 
-<% if !@tradition.approved %>
-<p>
-(Awaiting Aproval)
-</p>
-<% end %>
+<%end%>
 
+</table>
 
-<%= link_to "Rate This Tradition", new_tradition_rating_path(@tradition) %>

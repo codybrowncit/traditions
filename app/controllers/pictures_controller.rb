@@ -7,6 +7,7 @@ def index
 
 	def new
 		#@picture = Picture.new
+
 	end
 
 	def create
@@ -15,10 +16,11 @@ def index
 		#give the data to the model
 		#@picture = Picture.new(picture_params)
 		@picture.user = current_user
+		@picture.tradition = Tradition.find(params[:tradition_id])
 		#save the model
 		if @picture.save
 			# redirect to show or index
-			redirect_to @picture
+			redirect_to @picture.tradition
 		else
 			render :new
 		end
@@ -49,7 +51,7 @@ def index
 		redirect_to pictures_path
 	end
 	def picture_params
-	 params.require(:picture).permit(:url, :tradition_id, :approved)
+	 params.require(:picture).permit(:url, :approved)
 	end
 end
 

@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
-  resources :ratings, only: [:index, :destroy] 
 
   resource :session, only: [:new, :create, :destroy]
 
-  resources :pictures
-
+  resources :traditions do
+    resources :pictures, only: [:new, :create, :destroy, :edit, :update] do 
+          resources :likes, only: [:new, :create, :destroy]
+    end
+  end
+  resources :pictures, only: [:index]
   resources :users
 
-  resources :traditions do
-    resources :ratings, only: [:new, :create]
-  end
+
 
   root 'static#welcome'
   

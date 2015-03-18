@@ -11,21 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307001339) do
+ActiveRecord::Schema.define(version: 20150318030006) do
+
+  create_table "likes", force: true do |t|
+    t.integer  "picture_id"
+    t.integer  "user_id"
+    t.boolean  "liked"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pictures", force: true do |t|
     t.string   "url"
     t.integer  "tradition_id"
     t.integer  "user_id"
     t.boolean  "approved"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "ratings", force: true do |t|
-    t.integer  "tradition_id"
-    t.integer  "user_id"
-    t.integer  "rating_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20150307001339) do
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url"
   end
 
   create_table "users", force: true do |t|
