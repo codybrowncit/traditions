@@ -82739,3 +82739,65 @@ Processing by StaticController#welcome as HTML
   Rendered static/welcome.html.erb within layouts/application (3.7ms)
   [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
 Completed 200 OK in 70ms (Views: 69.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+Processing by StaticController#welcome as HTML
+  [1m[36mTradition Load (0.3ms)[0m  [1mSELECT "traditions".* FROM "traditions"[0m
+  [1m[35mPicture Load (0.1ms)[0m  SELECT "pictures".* FROM "pictures"  WHERE "pictures"."tradition_id" = ?  [["tradition_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mPicture Load (0.1ms)[0m  SELECT "pictures".* FROM "pictures"  WHERE "pictures"."tradition_id" = ?  [["tradition_id", 2]]
+  Rendered static/welcome.html.erb within layouts/application (24.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+Completed 200 OK in 121ms (Views: 115.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/likes.css?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/pictures.css?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/traditions.css?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/likes.js?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/pictures.js?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/traditions.js?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/DSU.png" for 127.0.0.1 at 2015-03-18 00:11:09 -0600
+
+
+Started GET "/assets/RBNo2.1/RBNo2.1a-Book.otf" for 127.0.0.1 at 2015-03-18 00:11:09 -0600

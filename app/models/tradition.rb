@@ -7,14 +7,7 @@ class Tradition < ActiveRecord::Base
 	validates :name, uniqueness: true
 	
 	
-	def completed
-		pictures.each do |p|
-			if p.user.email == current_user.email
-				return true
-			end
-		end
-		return false
-	end
+
 
 	def avg_rating
 		total = 0
