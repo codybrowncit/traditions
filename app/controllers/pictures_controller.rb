@@ -1,12 +1,14 @@
 class PicturesController < ApplicationController
 before_action :authenticate_user!
 load_and_authorize_resource
+before_filter :load_tradition
 def index
 		#@pictures = Picture.all
 	end
 
 	def new
 		#@picture = Picture.new
+		@picture = @tradition.pictures.new
 
 	end
 
@@ -15,8 +17,8 @@ def index
 		
 		#give the data to the model
 		#@picture = Picture.new(picture_params)
+		@picture = @tradition.pictures.new(picture_params)
 		@picture.user = current_user
-		@picture.tradition = Tradition.find(params[:tradition_id])
 		#save the model
 		if @picture.save
 			# redirect to show or index
@@ -53,5 +55,12 @@ def index
 	def picture_params
 	 params.require(:picture).permit(:url, :approved)
 	end
+	private
+
+    def load_tradition
+      @tradition = Tradition.find(params[:tradition_id])
+    end
+
+
 end
 

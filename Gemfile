@@ -47,3 +47,4 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 gem 'cancancan', '~> 1.10'
 gem 'carrierwave'
+gem 'mini_magick'
